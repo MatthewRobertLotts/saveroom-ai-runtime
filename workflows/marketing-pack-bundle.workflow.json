@@ -1,0 +1,26 @@
+{
+"workflow": "marketing-pack-bundle",
+"entry_agent": "Ash",
+"steps": [
+{
+"agent": "Gary",
+"mode": "delegation"
+},
+{
+"agent": "Todd",
+"mode": "execution"
+},
+{
+"agent": "Tracey",
+"mode": "execution"
+},
+{
+"agent": "Gary",
+"mode": "finalisation"
+},
+{
+"agent": "Ash",
+"mode": "finalisation"
+}
+]
+}

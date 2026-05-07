@@ -1,0 +1,46 @@
+{
+"$schema": "http://json-schema.org/draft-07/schema#",
+"title": "SaveRoom Task Call",
+"type": "object",
+"required": [
+"type",
+"agent",
+"mode",
+"task",
+"return_to",
+"priority"
+],
+"properties": {
+"type": {
+"type": "string",
+"enum": ["task_call"]
+},
+"agent": {
+"type": "string"
+},
+"mode": {
+"type": "string",
+"enum": [
+"delegation",
+"execution",
+"advisory",
+"finalisation"
+]
+},
+"task": {
+"type": "string"
+},
+"return_to": {
+"type": "string"
+},
+"priority": {
+"type": "string",
+"enum": [
+"low",
+"normal",
+"high",
+"urgent"
+]
+}
+}
+}
