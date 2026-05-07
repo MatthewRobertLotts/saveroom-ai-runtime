@@ -101,6 +101,25 @@ async function callOpenRouter(prompt: string, runtime: RuntimeContext): Promise<
     throw new Error("OPENROUTER_API_KEY is required for OpenRouter execution");
   }
 
+  const promptValidation = validatePrompt(prompt);
+  if (!promptValidation.ok) {
+    throw new Error(`OpenRouter prompt validation failed: ${promptValidation.reason}`);
+  }
+
+  const systemMessage = asSafeString("Return only the exact task output requested by the mode.");
+  const userMessage = asSafeString(prompt);
+  const payload = {
+    model: runtime.model,
+    messages: [
+      { role: "system", content: systemMessage },
+      { role: "user", content: userMessage }
+    ]
+  };
+
+  log(`prompt_size=${prompt.length}`);
+  log(`context_size=${Math.max(prompt.length - userMessage.length, 0)}`);
+  log(`payload_validation=openrouter ok`);
+
   const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
     method: "POST",
     headers: {
@@ -109,13 +128,7 @@ async function callOpenRouter(prompt: string, runtime: RuntimeContext): Promise<
       "HTTP-Referer": process.env.OPENROUTER_HTTP_REFERER || "https://openclaw.ai",
       "X-Title": process.env.OPENROUTER_APP_TITLE || "SaveRoom"
     },
-    body: JSON.stringify({
-      model: runtime.model,
-      messages: [
-        { role: "system", content: "Return only the exact task output requested by the mode." },
-        { role: "user", content: prompt }
-      ]
-    })
+    body: JSON.stringify(payload)
   });
 
   if (!response.ok) {
@@ -135,19 +148,32 @@ async function callOpenAI(prompt: string, runtime: RuntimeContext): Promise<stri
     throw new Error("OPENAI_API_KEY is required for OpenAI execution");
   }
 
+  const promptValidation = validatePrompt(prompt);
+  if (!promptValidation.ok) {
+    throw new Error(`OpenAI prompt validation failed: ${promptValidation.reason}`);
+  }
+
+  const systemMessage = asSafeString("Return only the exact task output requested by the mode.");
+  const userMessage = asSafeString(prompt);
+  const payload = {
+    model: runtime.model,
+    messages: [
+      { role: "system", content: systemMessage },
+      { role: "user", content: userMessage }
+    ]
+  };
+
+  log(`prompt_size=${prompt.length}`);
+  log(`context_size=${Math.max(prompt.length - userMessage.length, 0)}`);
+  log(`payload_validation=openai ok`);
+
   const response = await fetch("https://api.openai.com/v1/chat/completions", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${apiKey}`
     },
-    body: JSON.stringify({
-      model: runtime.model,
-      messages: [
-        { role: "system", content: "Return only the exact task output requested by the mode." },
-        { role: "user", content: prompt }
-      ]
-    })
+    body: JSON.stringify(payload)
   });
 
   if (!response.ok) {
@@ -161,24 +187,48 @@ async function callOpenAI(prompt: string, runtime: RuntimeContext): Promise<stri
   return data.choices?.[0]?.message?.content || "";
 }
 
-function buildPrompt(request: RuntimeAgentRequest): string {
-  const agentPrompt = loadAgentPrompt(request.agent);
-  const modePrompt = loadModePrompt(request.mode);
+function asSafeString(value: unknown): string {
+  if (value === null || value === undefined) return "";
+  return typeof value === "string" ? value : String(value);
+}
 
-  return [
+function buildPrompt(request: RuntimeAgentRequest): string {
+  const agentPrompt = asSafeString(loadAgentPrompt(request.agent));
+  const modePrompt = asSafeString(loadModePrompt(request.mode));
+  const task = asSafeString(request.task);
+  const returnTo = asSafeString(request.return_to);
+
+  const sections = [
     `AGENT:\n${agentPrompt || request.agent}`,
     `MODE:\n${modePrompt || request.mode}`,
-    `TASK:\n${request.task}`,
-    `RETURN TO:\n${request.return_to}`
-  ].join("\n\n");
+    `TASK:\n${task}`,
+    `RETURN TO:\n${returnTo}`
+  ].filter((section) => typeof section === "string" && section.trim().length > 0);
+
+  return sections.join("\n\n");
+}
+
+function validatePrompt(prompt: string): { ok: boolean; reason?: string } {
+  if (typeof prompt !== "string") return { ok: false, reason: "prompt is not a string" };
+  if (!prompt.trim()) return { ok: false, reason: "prompt is empty" };
+  return { ok: true };
 }
 
 export async function runRuntimeAgent(request: RuntimeAgentRequest): Promise<string> {
   const runtime = resolveRuntimeContext();
   const prompt = buildPrompt(request);
+  const promptValidation = validatePrompt(prompt);
 
   log(`provider=${runtime.provider}`);
   log(`model=${runtime.model}`);
+  log(`finalisation_mode=${request.mode === "finalisation" ? "true" : "false"}`);
+  log(`prompt_size=${prompt.length}`);
+
+  if (!promptValidation.ok) {
+    log(`execution=failure`);
+    log(`payload_validation_failed=${promptValidation.reason}`);
+    throw new Error(promptValidation.reason || "Invalid prompt");
+  }
 
   try {
     let output = "";

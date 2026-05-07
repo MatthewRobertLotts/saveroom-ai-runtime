@@ -44,6 +44,7 @@ function validateTaskCall(value: unknown): TaskCall | null {
   if (value.type !== "task_call") return null;
   if (typeof value.agent !== "string") return null;
   if (typeof value.mode !== "string" || !VALID_MODES.has(value.mode as TaskMode)) return null;
+  if (value.mode === "finalisation") return null;
   if (typeof value.task !== "string") return null;
   if (typeof value.return_to !== "string") return null;
   if (typeof value.priority !== "string" || !VALID_PRIORITIES.has(value.priority as TaskPriority)) return null;
