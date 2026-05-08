@@ -1,0 +1,58 @@
+{
+  "workflows": [
+    {
+      "name": "marketing-stream",
+      "description": "Create a marketing stream asset bundle.",
+      "required_inputs": ["stream_theme", "featured_languages", "featured_products", "tone"],
+      "optional_inputs": ["audience", "cta"],
+      "execution_steps": [
+        { "agent": "Gary", "mode": "delegation", "task": "Break down the marketing stream into specialist tasks." },
+        { "agent": "Todd", "mode": "execution", "task": "Draft stream title, Instagram caption, Discord announcement, and bundle ideas." },
+        { "agent": "Tracey", "mode": "execution", "task": "Refine the marketing assets for warmth, trust, and readability." },
+        { "agent": "Gary", "mode": "finalisation", "task": "Synthesize the final marketing stream bundle." }
+      ],
+      "output_artifacts": [
+        "outputs/stream/title.txt",
+        "outputs/stream/instagram-caption.txt",
+        "outputs/stream/discord-announcement.txt",
+        "outputs/stream/bundle-ideas.txt"
+      ]
+    },
+    {
+      "name": "finance-analysis",
+      "description": "Analyze finance data from a CSV input.",
+      "required_inputs": ["csv_path", "analysis_focus"],
+      "optional_inputs": ["timeframe", "inventory_context"],
+      "execution_steps": [
+        { "agent": "Giovanni", "mode": "execution", "task": "Inspect the finance data and produce profitability diagnostics." },
+        { "agent": "Giovanni", "mode": "finalisation", "task": "Synthesize the finance findings into a final report." }
+      ],
+      "output_artifacts": [
+        "reports/finance-analysis/run-.../report.md",
+        "reports/finance-analysis/run-.../fee-observations.txt",
+        "reports/finance-analysis/run-.../margin-warnings.txt",
+        "reports/finance-analysis/run-.../high-performing-stock-observations.txt",
+        "reports/finance-analysis/run-.../restock-recommendations.txt",
+        "reports/finance-analysis/run-.../profitability-summary.txt"
+      ]
+    },
+    {
+      "name": "shopify-listing",
+      "description": "Prepare a Shopify listing package.",
+      "required_inputs": ["product_name", "product_type", "language", "condition", "price_target"],
+      "optional_inputs": ["tone", "seo_focus"],
+      "execution_steps": [
+        { "agent": "Todd", "mode": "execution", "task": "Draft listing title, description, tags, shipping notes, and pricing guidance." },
+        { "agent": "Tracey", "mode": "execution", "task": "Refine listing copy for clarity and trust." },
+        { "agent": "Gary", "mode": "finalisation", "task": "Finalize the Shopify listing package." }
+      ],
+      "output_artifacts": [
+        "outputs/listings/title.txt",
+        "outputs/listings/description.md",
+        "outputs/listings/tags.txt",
+        "outputs/listings/shipping-notes.txt",
+        "outputs/listings/pricing-guidance.txt"
+      ]
+    }
+  ]
+}

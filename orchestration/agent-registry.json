@@ -1,0 +1,172 @@
+{
+  "agents": [
+    {
+      "name": "Ash",
+      "department": "executive",
+      "role": "COO",
+      "level": "head",
+      "status": "active",
+      "reports_to": "user",
+      "can_delegate": true,
+      "allowed_modes": ["delegation", "finalisation", "advisory"],
+      "core_responsibilities": ["route tasks", "delegate work", "coordinate departments", "return final results"],
+      "activation_notes": "Primary executive coordinator."
+    },
+    {
+      "name": "Brock",
+      "department": "advisory",
+      "role": "Advisor",
+      "level": "advisor",
+      "status": "active",
+      "reports_to": "Ash",
+      "can_delegate": false,
+      "allowed_modes": ["advisory"],
+      "core_responsibilities": ["operational advice", "risk checks", "practical review"],
+      "activation_notes": "Read-only advisory role."
+    },
+    {
+      "name": "Misty",
+      "department": "advisory",
+      "role": "Advisor",
+      "level": "advisor",
+      "status": "active",
+      "reports_to": "Ash",
+      "can_delegate": false,
+      "allowed_modes": ["advisory"],
+      "core_responsibilities": ["operational advice", "quality review", "practical guidance"],
+      "activation_notes": "Read-only advisory role."
+    },
+    {
+      "name": "Gary",
+      "department": "marketing",
+      "role": "Head of Marketing",
+      "level": "head",
+      "status": "active",
+      "reports_to": "Ash",
+      "can_delegate": true,
+      "allowed_modes": ["delegation", "execution", "finalisation"],
+      "core_responsibilities": ["marketing routing", "campaign coordination", "final assembly"],
+      "activation_notes": "Parallel department head."
+    },
+    {
+      "name": "Todd",
+      "department": "marketing",
+      "role": "Content Creator",
+      "level": "specialist",
+      "status": "active",
+      "reports_to": "Gary",
+      "can_delegate": false,
+      "allowed_modes": ["execution"],
+      "core_responsibilities": ["captions", "hooks", "short-form copy", "social content"],
+      "activation_notes": "Execution specialist."
+    },
+    {
+      "name": "Tracey",
+      "department": "marketing",
+      "role": "Community & Engagement",
+      "level": "specialist",
+      "status": "active",
+      "reports_to": "Gary",
+      "can_delegate": false,
+      "allowed_modes": ["execution"],
+      "core_responsibilities": ["engagement refinement", "community tone", "readability"],
+      "activation_notes": "Execution specialist."
+    },
+    {
+      "name": "Bill",
+      "department": "engineering",
+      "role": "Engineering & Orchestration Architect",
+      "level": "head",
+      "status": "active",
+      "reports_to": "Ash",
+      "can_delegate": true,
+      "allowed_modes": ["execution", "advisory", "delegation", "finalisation"],
+      "core_responsibilities": ["runtime engineering", "orchestration design", "tooling", "workflow infrastructure"],
+      "activation_notes": "Owns runtime engineering only."
+    },
+    {
+      "name": "Giovanni",
+      "department": "finance",
+      "role": "Finance & Performance Department Head",
+      "level": "head",
+      "status": "active",
+      "reports_to": "Ash",
+      "can_delegate": true,
+      "allowed_modes": ["execution", "finalisation", "advisory"],
+      "core_responsibilities": ["margin analysis", "fee analysis", "inventory movement", "restock recommendations", "profitability diagnostics"],
+      "activation_notes": "Parallel department head."
+    },
+    {
+      "name": "Professor Oak",
+      "department": "advisory",
+      "role": "Strategic Advisor",
+      "level": "advisor",
+      "status": "inactive",
+      "reports_to": "Ash",
+      "can_delegate": false,
+      "allowed_modes": ["advisory"],
+      "core_responsibilities": ["strategic advice"],
+      "activation_notes": "Stub only, not auto-routed."
+    },
+    {
+      "name": "Jessie",
+      "department": "marketing",
+      "role": "Planned Specialist",
+      "level": "specialist",
+      "status": "inactive",
+      "reports_to": "Gary",
+      "can_delegate": false,
+      "allowed_modes": ["execution"],
+      "core_responsibilities": ["planned marketing tasks"],
+      "activation_notes": "Stub only, not auto-routed."
+    },
+    {
+      "name": "James",
+      "department": "marketing",
+      "role": "Planned Specialist",
+      "level": "specialist",
+      "status": "inactive",
+      "reports_to": "Gary",
+      "can_delegate": false,
+      "allowed_modes": ["execution"],
+      "core_responsibilities": ["planned marketing tasks"],
+      "activation_notes": "Stub only, not auto-routed."
+    },
+    {
+      "name": "Meowth",
+      "department": "marketing",
+      "role": "Planned Specialist",
+      "level": "specialist",
+      "status": "inactive",
+      "reports_to": "Gary",
+      "can_delegate": false,
+      "allowed_modes": ["execution"],
+      "core_responsibilities": ["planned marketing tasks"],
+      "activation_notes": "Stub only, not auto-routed."
+    },
+    {
+      "name": "Mr. Stone",
+      "department": "finance",
+      "role": "Planned Advisor",
+      "level": "advisor",
+      "status": "inactive",
+      "reports_to": "Ash",
+      "can_delegate": false,
+      "allowed_modes": ["advisory"],
+      "core_responsibilities": ["planned finance advice"],
+      "activation_notes": "Stub only, not auto-routed."
+    },
+    {
+      "name": "Clefairy",
+      "department": "community",
+      "role": "Planned Specialist",
+      "level": "specialist",
+      "status": "inactive",
+      "reports_to": "Tracey",
+      "can_delegate": false,
+      "allowed_modes": ["execution"],
+      "core_responsibilities": ["planned community tasks"],
+      "activation_notes": "Stub only, not auto-routed."
+    }
+  ]
+}

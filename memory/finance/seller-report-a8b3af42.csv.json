@@ -1,0 +1,14 @@
+{
+  "file": "seller-report-a8b3af42.csv",
+  "domain": "finance",
+  "type": "csv",
+  "metadata": {
+    "filename": "seller-report-a8b3af42.csv",
+    "extension": "csv",
+    "size": 623722,
+    "created_at": "2026-05-08T00:39:57.164Z"
+  },
+  "routed_agents": [
+    "Giovanni"
+  ]
+}
