@@ -98,15 +98,15 @@
     },
     {
       "name": "Professor Oak",
-      "department": "advisory",
-      "role": "Strategic Advisor",
-      "level": "advisor",
-      "status": "inactive",
+      "department": "research",
+      "role": "Head of Research & Development",
+      "level": "head",
+      "status": "active",
       "reports_to": "Ash",
       "can_delegate": false,
-      "allowed_modes": ["advisory"],
-      "core_responsibilities": ["strategic advice"],
-      "activation_notes": "Stub only, not auto-routed."
+      "allowed_modes": ["execution", "advisory"],
+      "core_responsibilities": ["research intelligence", "sourcing analysis", "product trend analysis", "release impact assessment", "inventory opportunity identification"],
+      "activation_notes": "Parallel department head. Tavily access governed by workflow approval. Research department owner."
     },
     {
       "name": "Jessie",

@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 
 export type ToolName = "read_file" | "write_file" | "list_directory" | "save_artifact";
+export type DepartmentName = "Todd" | "Brock" | "Misty" | "Gary" | "Bill" | "Giovanni" | "Professor Oak";
 
 export interface ToolRequest {
   tool: ToolName;
@@ -28,19 +29,22 @@ const protectedPrefixes = [
   path.join(workspaceRoot, "agents")
 ];
 
+function log(message: string) {
+  console.log(`[TOOLS] ${message}`);
+}
+
 log(`resolved_workspace_root=${workspaceRoot}`);
 log(`resolved_outputs_root=${outputsRoot}`);
 
 const permissions: Record<string, ToolName[]> = {
   Todd: ["read_file", "write_file", "list_directory", "save_artifact"],
   Brock: ["read_file", "list_directory"],
+  Misty: ["read_file", "list_directory"],
   Gary: ["read_file", "write_file", "list_directory", "save_artifact"],
-  Bill: ["read_file", "write_file", "list_directory", "save_artifact"]
+  Bill: ["read_file", "write_file", "list_directory", "save_artifact"],
+  Giovanni: ["read_file", "list_directory", "save_artifact"],
+  "Professor Oak": ["read_file", "list_directory", "save_artifact"]
 };
-
-function log(message: string) {
-  console.log(`[TOOLS] ${message}`);
-}
 
 function now() {
   return new Date().toISOString();
@@ -135,8 +139,8 @@ export function write_file(agent: string, targetPath: string, content: string): 
 
 export function save_artifact(agent: string, targetPath: string, content: string): ToolResult {
   ensurePermission(agent, "save_artifact");
-  const artifactPath = path.join("outputs", path.normalize(targetPath));
-  const resolved = path.resolve(outputsRoot, path.normalize(targetPath));
+  const normalizedTarget = path.normalize(targetPath).replace(/^([/\\])+/, "");
+  const resolved = path.resolve(outputsRoot, normalizedTarget);
   if (!resolved.startsWith(outputsRoot)) {
     throw new Error(`Artifact path escapes outputs root: ${targetPath}`);
   }

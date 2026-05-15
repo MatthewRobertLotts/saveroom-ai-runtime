@@ -16,6 +16,7 @@ interface Recommendation {
   suggested_workflows: string[];
   confidence: "low" | "medium" | "high";
   suggested_outputs: string[];
+  related_insights: unknown[];
   approval_required: true;
 }
 
@@ -27,14 +28,27 @@ function loadMemory(domain: string, file: string): unknown | null {
   return JSON.parse(fs.readFileSync(memoryPath, "utf8"));
 }
 
-function confidenceFor(domain: string, memoryHit: boolean, routedCount: number): "low" | "medium" | "high" {
-  if (memoryHit && routedCount > 0) return "high";
-  if (domain !== "unknown" && routedCount > 0) return "medium";
+function loadInsights(domain: string): unknown[] {
+  const insightsDir = path.join(workspaceRoot, "insights", domain);
+  if (!fs.existsSync(insightsDir)) return [];
+  return fs.readdirSync(insightsDir).slice(0, 5).map((file) => {
+    try {
+      return JSON.parse(fs.readFileSync(path.join(insightsDir, file), "utf8"));
+    } catch {
+      return null;
+    }
+  }).filter(Boolean);
+}
+
+function confidenceFor(domain: string, memoryHit: boolean, routedCount: number, insightCount: number): "low" | "medium" | "high" {
+  if (memoryHit && routedCount > 0 && insightCount > 0) return "high";
+  if (domain !== "unknown" && (routedCount > 0 || insightCount > 0)) return "medium";
   return "low";
 }
 
 export function recommend(record: IngestionRecord): Recommendation {
   const memoryHit = Boolean(loadMemory(record.domain, record.file));
+  const relatedInsights = loadInsights(record.domain);
   let suggestedDepartment = "Ash";
   let suggestedWorkflows: string[] = [];
   let suggestedOutputs: string[] = [];
@@ -52,9 +66,13 @@ export function recommend(record: IngestionRecord): Recommendation {
     suggestedWorkflows = ["runtime-review"];
     suggestedOutputs = ["reports/runtime/run-.../summary.md"];
   } else if (record.domain === "inventory") {
-    suggestedDepartment = "Giovanni";
-    suggestedWorkflows = ["finance-analysis"];
-    suggestedOutputs = ["reports/finance-analysis/run-.../restock-recommendations.txt"];
+    suggestedDepartment = "Professor Oak";
+    suggestedWorkflows = ["supplier-analysis", "inventory-opportunity-analysis"];
+    suggestedOutputs = ["insights/research/run-.../inventory-opportunities.txt"];
+  } else if (record.domain === "research") {
+    suggestedDepartment = "Professor Oak";
+    suggestedWorkflows = ["product-trend-analysis", "release-impact-analysis"];
+    suggestedOutputs = ["insights/research/run-.../trend-summary.txt"];
   }
 
   return {
@@ -62,8 +80,9 @@ export function recommend(record: IngestionRecord): Recommendation {
     classification: record.domain,
     suggested_department: suggestedDepartment,
     suggested_workflows: suggestedWorkflows,
-    confidence: confidenceFor(record.domain, memoryHit, record.routed_agents.length),
+    confidence: confidenceFor(record.domain, memoryHit, record.routed_agents.length, relatedInsights.length),
     suggested_outputs: suggestedOutputs,
+    related_insights: relatedInsights,
     approval_required: true
   };
 }

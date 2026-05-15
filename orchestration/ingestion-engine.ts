@@ -31,7 +31,7 @@ function ensureDirs() {
 
 function classify(filename: string, content: string): { domain: IngestionDomain; routed: string[] } {
   const lower = `${filename}\n${content}`.toLowerCase();
-  if (lower.includes("whatnot") || lower.includes("price") || lower.includes("supplier")) {
+  if (lower.includes("whatnot") || lower.includes("price") || lower.includes("supplier") || lower.includes("sold")) {
     return { domain: "finance", routed: ["Giovanni"] };
   }
   if (lower.includes("marketing") || lower.includes("caption") || lower.includes("campaign") || lower.includes("instagram")) {
@@ -40,11 +40,11 @@ function classify(filename: string, content: string): { domain: IngestionDomain;
   if (lower.includes("runtime") || lower.includes("orchestrator") || lower.includes("log") || lower.includes("obs")) {
     return { domain: "runtime", routed: ["Bill"] };
   }
-  if (lower.includes("inventory") || lower.includes("stock") || lower.includes("sku") || lower.includes("pokemon center")) {
-    return { domain: "inventory", routed: ["Giovanni"] };
+  if (lower.includes("inventory") || lower.includes("stock") || lower.includes("sku") || lower.includes("pokemon center") || lower.includes("set") || lower.includes("product")) {
+    return { domain: "inventory", routed: ["Giovanni", "Professor Oak"] };
   }
-  if (lower.includes("research") || lower.includes("analysis")) {
-    return { domain: "research", routed: ["Giovanni"] };
+  if (lower.includes("research") || lower.includes("analysis") || lower.includes("release") || lower.includes("trend")) {
+    return { domain: "research", routed: ["Professor Oak"] };
   }
   return { domain: "unknown", routed: [] };
 }

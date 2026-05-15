@@ -53,6 +53,61 @@
         "outputs/listings/shipping-notes.txt",
         "outputs/listings/pricing-guidance.txt"
       ]
+    },
+    {
+      "name": "supplier-analysis",
+      "description": "Analyze supplier and sourcing data for research and inventory intelligence.",
+      "required_inputs": ["source_path", "analysis_focus"],
+      "optional_inputs": ["supplier_name", "category"],
+      "execution_steps": [
+        { "agent": "Professor Oak", "mode": "execution", "task": "Interpret supplier and sourcing evidence." },
+        { "agent": "Professor Oak", "mode": "finalisation", "task": "Synthesize supplier analysis into a practical report." }
+      ],
+      "output_artifacts": [
+        "insights/research/run-.../supplier-summary.txt",
+        "insights/research/run-.../sourcing-observations.txt"
+      ]
+    },
+    {
+      "name": "product-trend-analysis",
+      "description": "Analyze product and category trends.",
+      "required_inputs": ["source_path", "analysis_focus"],
+      "optional_inputs": ["category", "region"],
+      "execution_steps": [
+        { "agent": "Professor Oak", "mode": "execution", "task": "Assess product and category trend context." },
+        { "agent": "Professor Oak", "mode": "finalisation", "task": "Synthesize product trend observations." }
+      ],
+      "output_artifacts": [
+        "insights/research/run-.../trend-summary.txt",
+        "insights/research/run-.../category-observations.txt"
+      ]
+    },
+    {
+      "name": "release-impact-analysis",
+      "description": "Assess release timing and market impact.",
+      "required_inputs": ["source_path", "analysis_focus"],
+      "optional_inputs": ["set_name", "release_window"],
+      "execution_steps": [
+        { "agent": "Professor Oak", "mode": "execution", "task": "Interpret release timing and product impact." },
+        { "agent": "Professor Oak", "mode": "finalisation", "task": "Synthesize release impact findings." }
+      ],
+      "output_artifacts": [
+        "insights/research/run-.../release-impact.txt"
+      ]
+    },
+    {
+      "name": "inventory-opportunity-analysis",
+      "description": "Identify inventory opportunities and sourcing gaps.",
+      "required_inputs": ["source_path", "analysis_focus"],
+      "optional_inputs": ["supplier_name", "inventory_context"],
+      "execution_steps": [
+        { "agent": "Professor Oak", "mode": "execution", "task": "Review inventory opportunity signals and gaps." },
+        { "agent": "Professor Oak", "mode": "finalisation", "task": "Synthesize inventory opportunity recommendations." }
+      ],
+      "output_artifacts": [
+        "insights/research/run-.../inventory-opportunities.txt",
+        "insights/research/run-.../sourcing-gaps.txt"
+      ]
     }
   ]
 }

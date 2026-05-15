@@ -6,6 +6,8 @@ export interface RuntimeAgentRequest {
   mode: string;
   task: string;
   return_to: string;
+  approved?: boolean;
+  workflow?: string;
 }
 
 export interface RuntimeContext {
@@ -93,6 +95,50 @@ export function resolveRuntimeContext(): RuntimeContext {
     model: process.env.SAVEROOM_DEFAULT_MODEL || "openai/gpt-4o-mini",
     source: "defaults"
   };
+}
+
+function resolveTavilyCommandSpecs(request: RuntimeAgentRequest): { specs: string[]; tavilyCommandName?: string } {
+  const tavilyCommandName = "/tavily_search";
+  const eligible = request.agent === "Professor Oak" && request.approved === true && (request.workflow || "").length > 0 && request.mode !== "delegation";
+  if (!eligible) return { specs: [] };
+
+  return {
+    tavilyCommandName,
+    specs: [
+      `COMMAND SPEC: ${tavilyCommandName}`,
+      `- scope: Professor Oak research workflows only`,
+      `- usage: structured Tavily search/extract via OpenClaw native runtime`,
+      `- approval: required and already granted for this workflow`
+    ]
+  };
+}
+
+function asSafeString(value: unknown): string {
+  if (value === null || value === undefined) return "";
+  return typeof value === "string" ? value : String(value);
+}
+
+function buildPrompt(request: RuntimeAgentRequest): string {
+  const agentPrompt = asSafeString(loadAgentPrompt(request.agent));
+  const modePrompt = asSafeString(loadModePrompt(request.mode));
+  const task = asSafeString(request.task);
+  const returnTo = asSafeString(request.return_to);
+  const commandSpecs = resolveTavilyCommandSpecs(request);
+
+  log(`command_specs_present=${commandSpecs.specs.length > 0 ? "yes" : "no"}`);
+  log(`tavily_command_name=${commandSpecs.tavilyCommandName || "none"}`);
+  log(`command_spec_count=${commandSpecs.specs.length}`);
+
+  const sections = [
+    `AGENT:\n${agentPrompt || request.agent}`,
+    `MODE:\n${modePrompt || request.mode}`,
+    `TASK:\n${task}`,
+    `RETURN TO:\n${returnTo}`,
+    commandSpecs.specs.length > 0 ? `COMMAND SPECS:\n${commandSpecs.specs.join("\n")}` : ""
+  ].filter((section) => typeof section === "string" && section.trim().length > 0);
+
+  log(`command_specs_injected_into_payload=${commandSpecs.specs.length > 0 ? "yes" : "no"}`);
+  return sections.join("\n\n");
 }
 
 async function callOpenRouter(prompt: string, runtime: RuntimeContext): Promise<string> {
@@ -185,27 +231,6 @@ async function callOpenAI(prompt: string, runtime: RuntimeContext): Promise<stri
   };
 
   return data.choices?.[0]?.message?.content || "";
-}
-
-function asSafeString(value: unknown): string {
-  if (value === null || value === undefined) return "";
-  return typeof value === "string" ? value : String(value);
-}
-
-function buildPrompt(request: RuntimeAgentRequest): string {
-  const agentPrompt = asSafeString(loadAgentPrompt(request.agent));
-  const modePrompt = asSafeString(loadModePrompt(request.mode));
-  const task = asSafeString(request.task);
-  const returnTo = asSafeString(request.return_to);
-
-  const sections = [
-    `AGENT:\n${agentPrompt || request.agent}`,
-    `MODE:\n${modePrompt || request.mode}`,
-    `TASK:\n${task}`,
-    `RETURN TO:\n${returnTo}`
-  ].filter((section) => typeof section === "string" && section.trim().length > 0);
-
-  return sections.join("\n\n");
 }
 
 function validatePrompt(prompt: string): { ok: boolean; reason?: string } {
