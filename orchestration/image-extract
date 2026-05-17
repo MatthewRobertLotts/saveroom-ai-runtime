@@ -1,0 +1,19 @@
+#!/bin/bash
+# image-extract — Extract structured text from an image using a vision model.
+#
+# Usage:
+#   image-extract <path-to-image>
+#
+# Output: JSON to stdout (logs go to stderr)
+#
+# This is the tool agents should use when they need to read/extract
+# information from image files. Your model cannot process images directly —
+# this CLI sends the image to a vision model via OpenRouter and returns
+# the extracted text as structured JSON.
+
+set -e
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
+
+exec npx ts-node "$SCRIPT_DIR/image-extract-cli.ts" "$@"
