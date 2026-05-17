@@ -1,16 +1,13 @@
-import fs from "fs";
-import path from "path";
-import { processInboxFile } from "./ingestion-engine";
+import { processInbox } from "./ingestion-engine";
 
-const workspaceRoot = path.resolve(__dirname, "..");
-const inboxDir = path.join(workspaceRoot, "ingestion", "inbox");
-
-function main() {
-  const files = fs.readdirSync(inboxDir).filter((file) => fs.statSync(path.join(inboxDir, file)).isFile());
-  for (const file of files) {
-    const result = processInboxFile(file);
+async function main() {
+  const results = await processInbox();
+  for (const result of results) {
     console.log(JSON.stringify(result, null, 2));
   }
 }
 
-main();
+main().catch((err) => {
+  console.error(`[RUNNER] fatal error: ${err}`);
+  process.exit(1);
+});
