@@ -1,0 +1,47 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Customer & Community Memory",
+  "description": "Insights about what customers respond to, trust signals, and community patterns. These are observations, not facts about specific individuals. Never store personal data.",
+  "type": "object",
+  "required": ["trust_signals", "feedback_patterns", "community_insights"],
+  "properties": {
+    "trust_signals": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["signal", "evidence"],
+        "properties": {
+          "signal": { "type": "string" },
+          "evidence": { "type": "string" },
+          "date_observed": { "type": "string", "format": "date" },
+          "confidence": { "type": "string", "enum": ["low", "medium", "high"] }
+        }
+      }
+    },
+    "feedback_patterns": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["pattern", "date_observed"],
+        "properties": {
+          "pattern": { "type": "string" },
+          "context": { "type": "string" },
+          "date_observed": { "type": "string", "format": "date" },
+          "confidence": { "type": "string", "enum": ["low", "medium", "high"] }
+        }
+      }
+    },
+    "community_insights": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["insight", "date_observed"],
+        "properties": {
+          "insight": { "type": "string" },
+          "date_observed": { "type": "string", "format": "date" },
+          "confidence": { "type": "string", "enum": ["low", "medium", "high"] }
+        }
+      }
+    }
+  }
+}

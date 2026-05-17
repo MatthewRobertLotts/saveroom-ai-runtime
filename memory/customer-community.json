@@ -1,0 +1,54 @@
+{
+  "trust_signals": [
+    {
+      "signal": "Quality packaging (toploaders, sleeves, padded envelopes)",
+      "evidence": "Packaging quality is explicitly a core trust signal for the brand.",
+      "date_observed": "2026-05-17",
+      "confidence": "high"
+    },
+    {
+      "signal": "Fair, transparent pricing",
+      "evidence": "Brand tone is 'fair prices, no nonsense'. Anti-scalper positioning.",
+      "date_observed": "2026-05-17",
+      "confidence": "high"
+    },
+    {
+      "signal": "SaveRoom 'Seal of Approval' stickers",
+      "evidence": "Part of the brand experience. Builds recognition.",
+      "date_observed": "2026-05-17",
+      "confidence": "medium"
+    },
+    {
+      "signal": "No gambling or manipulative tactics",
+      "evidence": "Explicit brand red line. Community values fairness.",
+      "date_observed": "2026-05-17",
+      "confidence": "high"
+    }
+  ],
+  "feedback_patterns": [
+    {
+      "pattern": "Community responds well to guaranteed-hit style products",
+      "context": "Mega Dream JP performs well because of guaranteed-hit appeal.",
+      "date_observed": "2026-05-17",
+      "confidence": "medium"
+    },
+    {
+      "pattern": "Viewers prefer simple, clear bundle structures",
+      "context": "Too many bundle types slow streams down and create confusion.",
+      "date_observed": "2026-05-17",
+      "confidence": "medium"
+    }
+  ],
+  "community_insights": [
+    {
+      "insight": "The community is fairness-oriented and anti-scalper",
+      "date_observed": "2026-05-17",
+      "confidence": "high"
+    },
+    {
+      "insight": "Korean products have gained appreciation over time",
+      "date_observed": "2026-05-17",
+      "confidence": "medium"
+    }
+  ]
+}

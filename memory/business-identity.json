@@ -1,0 +1,61 @@
+{
+  "business_name": "SaveRoom",
+  "business_type": "UK Pokémon TCG livestream business",
+  "platforms": [
+    {
+      "name": "Whatnot",
+      "role": "primary",
+      "notes": "Main sales channel. Live streaming format. UK audience."
+    },
+    {
+      "name": "Shopify",
+      "role": "secondary",
+      "notes": "Secondary sales channel. Less active than Whatnot currently."
+    }
+  ],
+  "brand": {
+    "tone": "Fair prices, no nonsense. Community-first. Anti-scalper.",
+    "values": [
+      "Community-first",
+      "Fairness-oriented",
+      "Anti-scalper",
+      "Trust/packaging focused",
+      "No gambling mechanics",
+      "No manipulative scarcity tactics"
+    ],
+    "red_lines": [
+      {
+        "rule": "No gambling mechanics",
+        "reason": "Brand commitment to fairness. Wheels, lottery formats, and random-draw-for-prizes undermine trust."
+      },
+      {
+        "rule": "No manipulative scarcity tactics",
+        "reason": "Artificial scarcity (fake countdowns, false low-stock warnings) damages community trust."
+      },
+      {
+        "rule": "No scalper pricing",
+        "reason": "SaveRoom exists to serve the community, not to flip at maximum margin."
+      }
+    ]
+  },
+  "product_categories": [
+    { "category": "Pokémon packs (English)", "status": "active", "notes": "Core product. Can sell quickly but higher buy-price risk." },
+    { "category": "Pokémon packs (Japanese)", "status": "active", "notes": "Steady performer. Reliable demand." },
+    { "category": "Pokémon packs (Korean)", "status": "active", "notes": "Performing better than originally expected. Now a useful staple." },
+    { "category": "Pokémon packs (Simplified Chinese)", "status": "experimental", "notes": "Can be useful if priced correctly. Still finding the right positioning." },
+    { "category": "Slabs", "status": "active", "notes": "Higher AOV items. Good for stream anchors." },
+    { "category": "Singles", "status": "active", "notes": "Core product. Must be sleeved." },
+    { "category": "Bundles", "status": "active", "notes": "Default should be simple bundle structures. Too many types slow streams down." },
+    { "category": "Giveaways", "status": "active", "notes": "Community building tool. Not a revenue driver." },
+    { "category": "Mega Dream JP", "status": "active", "notes": "Strong stream anchor due to guaranteed-hit style appeal." }
+  ],
+  "current_priorities": [
+    "Sourcing intelligence",
+    "Stream planning",
+    "Profitability diagnostics",
+    "Ingestion-assisted recommendations",
+    "Workflow automation"
+  ],
+  "created_at": "2026-05-17",
+  "updated_at": "2026-05-17"
+}

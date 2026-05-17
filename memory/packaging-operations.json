@@ -1,0 +1,55 @@
+{
+  "packaging_rules": [
+    {
+      "rule": "Hits over roughly £4–£5 should normally be top-loaded",
+      "applies_to": "High-value singles/slabs",
+      "threshold_gbp": 4.00,
+      "notes": "Toploaders are a core trust signal for higher-value items."
+    },
+    {
+      "rule": "Singles should be sleeved",
+      "applies_to": "All singles",
+      "notes": "Basic protection. Non-negotiable."
+    },
+    {
+      "rule": "Orders usually ship in padded envelopes",
+      "applies_to": "Standard orders",
+      "notes": "Padded envelopes are the default shipping method."
+    },
+    {
+      "rule": "Team bags and SaveRoom 'Seal of Approval' stickers are part of the brand experience",
+      "applies_to": "All orders",
+      "notes": "Brand touchpoint. Builds recognition and trust."
+    }
+  ],
+  "shipping_standards": [
+    {
+      "standard": "All items must be adequately protected for transit",
+      "notes": "Damaged items destroy trust and create unnecessary hassle."
+    },
+    {
+      "standard": "Packaging should reflect the value of the contents",
+      "notes": "Higher-value items get better packaging. This is a trust signal."
+    }
+  ],
+  "stream_operations": [
+    {
+      "rule": "Default to simple bundle structures",
+      "reason": "Too many bundle types slow streams down and confuse viewers."
+    },
+    {
+      "rule": "Stream pacing should maintain energy without rushing",
+      "reason": "Rushed streams feel transactional. Community-first means taking time."
+    }
+  ],
+  "red_lines": [
+    {
+      "rule": "Never ship damaged or poorly packaged items",
+      "reason": "Packaging quality is a core trust signal. Damaged items destroy community trust."
+    },
+    {
+      "rule": "Never use gambling mechanics or manipulative scarcity",
+      "reason": "Brand commitment to fairness. These tactics damage community trust."
+    }
+  ]
+}

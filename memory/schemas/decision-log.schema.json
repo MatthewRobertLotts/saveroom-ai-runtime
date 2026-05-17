@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Decision Log Memory",
+  "description": "Log of important business decisions. Each entry captures what was decided, by whom, and why. Outcomes can be added later.",
+  "type": "object",
+  "required": ["decisions"],
+  "properties": {
+    "decisions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "date", "topic", "decision_maker"],
+        "properties": {
+          "id": { "type": "string" },
+          "date": { "type": "string", "format": "date" },
+          "topic": { "type": "string" },
+          "context": { "type": "string" },
+          "options_considered": { "type": "array", "items": { "type": "string" } },
+          "decision": { "type": "string" },
+          "decision_maker": { "type": "string", "description": "Who made the final call (usually Matthew)" },
+          "agents_involved": { "type": "array", "items": { "type": "string" } },
+          "reasoning": { "type": "string" },
+          "outcome": { "type": "string" },
+          "outcome_date": { "type": "string", "format": "date" },
+          "lessons_learned": { "type": "string" },
+          "status": { "type": "string", "enum": ["pending", "implemented", "superseded", "reversed"] }
+        }
+      }
+    }
+  }
+}

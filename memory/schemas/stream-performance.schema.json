@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Stream Performance Memory",
+  "description": "Per-stream observations. Each stream gets one record. These are dated observations, not permanent truths. One bad stream does not define a product or strategy.",
+  "type": "object",
+  "required": ["streams"],
+  "properties": {
+    "streams": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "stream_date"],
+        "properties": {
+          "id": { "type": "string" },
+          "stream_date": { "type": "string", "format": "date" },
+          "products_featured": { "type": "array", "items": { "type": "string" } },
+          "attendance_notes": { "type": "string" },
+          "what_sold_well": { "type": "array", "items": { "type": "string" } },
+          "what_struggled": { "type": "array", "items": { "type": "string" } },
+          "successful_bundle_formats": { "type": "array", "items": { "type": "string" } },
+          "giveaway_notes": { "type": "string" },
+          "pricing_notes": { "type": "string" },
+          "pacing_notes": { "type": "string" },
+          "community_response": { "type": "string" },
+          "lessons_learned": { "type": "array", "items": { "type": "string" } },
+          "confidence": { "type": "string", "enum": ["low", "medium", "high"] }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "streams": [
+    {
+      "id": "stream-001",
+      "stream_date": "2026-05-17",
+      "products_featured": ["Mega Dream JP", "English packs", "Singles"],
+      "attendance_notes": "No specific attendance data recorded yet.",
+      "what_sold_well": ["Mega Dream JP"],
+      "what_struggled": [],
+      "successful_bundle_formats": ["Simple bundle structures preferred — too many bundle types slow streams down"],
+      "giveaway_notes": "Giveaways are a community building tool, not a revenue driver.",
+      "pricing_notes": "Low-AOV flat-fee risk on Whatnot matters, especially around £1–£2 hammer prices.",
+      "pacing_notes": "Keep bundle types simple. Default should be simple bundle structures.",
+      "community_response": "Community values fairness and transparency.",
+      "lessons_learned": [
+        "Too many bundle types slow streams down. Default to simple structures.",
+        "Mega Dream JP is a strong stream anchor due to guaranteed-hit style appeal."
+      ],
+      "confidence": "low"
+    }
+  ]
+}

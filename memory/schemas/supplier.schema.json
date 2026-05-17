@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Supplier Memory",
+  "description": "Information about suppliers and sourcing channels. Each supplier gets one record that is updated over time. Do not store personal data of individual sellers.",
+  "type": "object",
+  "required": ["suppliers"],
+  "properties": {
+    "suppliers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "source_type"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "source_type": { "type": "string", "enum": ["shop", "wholesaler", "marketplace", "private_seller", "online_retailer", "distributor"] },
+          "reliability": { "type": "string", "enum": ["reliable", "mixed", "unreliable", "unknown"] },
+          "reliability_notes": { "type": "string" },
+          "pricing_notes": { "type": "string" },
+          "delivery_notes": { "type": "string" },
+          "minimum_spend_gbp": { "type": "number" },
+          "useful_product_types": { "type": "array", "items": { "type": "string" } },
+          "risk_notes": { "type": "string" },
+          "last_used_date": { "type": "string", "format": "date" },
+          "total_transactions": { "type": "integer" },
+          "notes": { "type": "string" }
+        }
+      }
+    }
+  }
+}

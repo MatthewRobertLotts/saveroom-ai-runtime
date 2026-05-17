@@ -1,0 +1,63 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Pricing & Fee Memory",
+  "description": "Financial rules, fee assumptions, and pricing logic. Stable rules (like fee structures) live alongside dated observations (like margin performance). Each rule/observation is dated and sourced.",
+  "type": "object",
+  "required": ["fee_assumptions", "pricing_rules", "margin_observations", "break_even_warnings"],
+  "properties": {
+    "fee_assumptions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["platform", "fee_type", "value", "date_observed"],
+        "properties": {
+          "platform": { "type": "string" },
+          "fee_type": { "type": "string" },
+          "value": { "type": "string" },
+          "notes": { "type": "string" },
+          "date_observed": { "type": "string", "format": "date" },
+          "source": { "type": "string" }
+        }
+      }
+    },
+    "pricing_rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["rule", "reason", "date_set"],
+        "properties": {
+          "rule": { "type": "string" },
+          "reason": { "type": "string" },
+          "date_set": { "type": "string", "format": "date" },
+          "status": { "type": "string", "enum": ["active", "superseded", "experimental"] }
+        }
+      }
+    },
+    "margin_observations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["observation", "date_observed"],
+        "properties": {
+          "observation": { "type": "string" },
+          "product_type": { "type": "string" },
+          "date_observed": { "type": "string", "format": "date" },
+          "confidence": { "type": "string", "enum": ["low", "medium", "high"] }
+        }
+      }
+    },
+    "break_even_warnings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["warning", "threshold_gbp", "date_identified"],
+        "properties": {
+          "warning": { "type": "string" },
+          "threshold_gbp": { "type": "number" },
+          "context": { "type": "string" },
+          "date_identified": { "type": "string", "format": "date" }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Business Identity Memory",
+  "description": "Stable facts about SaveRoom. This is the least frequently updated memory domain. Changes should be rare and reflect actual business model changes, not temporary observations.",
+  "type": "object",
+  "required": ["business_name", "business_type", "platforms", "brand", "created_at", "updated_at"],
+  "properties": {
+    "business_name": { "type": "string" },
+    "business_type": { "type": "string" },
+    "platforms": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "role"],
+        "properties": {
+          "name": { "type": "string" },
+          "role": { "type": "string", "enum": ["primary", "secondary", "experimental"] },
+          "notes": { "type": "string" }
+        }
+      }
+    },
+    "brand": {
+      "type": "object",
+      "properties": {
+        "tone": { "type": "string" },
+        "values": { "type": "array", "items": { "type": "string" } },
+        "red_lines": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["rule", "reason"],
+            "properties": {
+              "rule": { "type": "string" },
+              "reason": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "product_categories": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["category", "status"],
+        "properties": {
+          "category": { "type": "string" },
+          "status": { "type": "string", "enum": ["active", "experimental", "paused"] },
+          "notes": { "type": "string" }
+        }
+      }
+    },
+    "current_priorities": { "type": "array", "items": { "type": "string" } },
+    "created_at": { "type": "string", "format": "date" },
+    "updated_at": { "type": "string", "format": "date" }
+  }
+}

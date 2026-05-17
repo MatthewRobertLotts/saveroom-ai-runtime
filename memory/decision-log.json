@@ -1,0 +1,77 @@
+{
+  "decisions": [
+    {
+      "id": "dec-001",
+      "date": "2026-05-17",
+      "topic": "Brand positioning — anti-scalper, community-first",
+      "context": "SaveRoom needed a clear brand identity that differentiates from scalpers and resellers.",
+      "options_considered": [
+        "Compete on price alone (race to the bottom)",
+        "Position as premium/curated (higher margins, smaller audience)",
+        "Position as community-first, fair prices, anti-scalper (chosen)"
+      ],
+      "decision": "Position as community-first, fair prices, anti-scalper",
+      "decision_maker": "Matthew",
+      "agents_involved": [],
+      "reasoning": "Aligns with the actual values of the Pokémon TCG community. Builds long-term trust and repeat buyers. Avoids the race-to-the-bottom problem.",
+      "outcome": "Brand tone established as 'fair prices, no nonsense'.",
+      "outcome_date": "2026-05-17",
+      "lessons_learned": null,
+      "status": "implemented"
+    },
+    {
+      "id": "dec-002",
+      "date": "2026-05-17",
+      "topic": "No gambling mechanics policy",
+      "context": "Some Whatnot sellers use wheel spins, lottery formats, and random-draw mechanics to drive engagement.",
+      "options_considered": [
+        "Use gambling mechanics like other sellers (potentially higher short-term engagement)",
+        "Commit to no gambling mechanics (chosen)"
+      ],
+      "decision": "Commit to no gambling mechanics",
+      "decision_maker": "Matthew",
+      "agents_involved": [],
+      "reasoning": "Gambling mechanics undermine trust and are inconsistent with the fairness-oriented brand. They can also create regulatory risk.",
+      "outcome": "Established as a brand red line.",
+      "outcome_date": "2026-05-17",
+      "lessons_learned": null,
+      "status": "implemented"
+    },
+    {
+      "id": "dec-003",
+      "date": "2026-05-17",
+      "topic": "Korean products as staple",
+      "context": "Korean products were initially experimental but have performed better than expected.",
+      "options_considered": [
+        "Keep Korean as experimental/niche",
+        "Promote Korean to staple product line (chosen)"
+      ],
+      "decision": "Promote Korean to staple product line",
+      "decision_maker": "Matthew",
+      "agents_involved": ["Professor Oak"],
+      "reasoning": "Korean products have shown consistent performance and good margins. They offer good value to customers.",
+      "outcome": "Korean products now considered a useful staple alongside Japanese.",
+      "outcome_date": "2026-05-17",
+      "lessons_learned": null,
+      "status": "implemented"
+    },
+    {
+      "id": "dec-004",
+      "date": "2026-05-17",
+      "topic": "Simple bundle structures as default",
+      "context": "Too many bundle types were slowing streams down and confusing viewers.",
+      "options_considered": [
+        "Continue with many bundle types (more options for buyers)",
+        "Default to simple bundle structures (chosen)"
+      ],
+      "decision": "Default to simple bundle structures",
+      "decision_maker": "Matthew",
+      "agents_involved": ["Gary"],
+      "reasoning": "Stream pacing suffers with too many options. Simple bundles are easier to explain and faster to sell.",
+      "outcome": "Simple bundle structures established as the default.",
+      "outcome_date": "2026-05-17",
+      "lessons_learned": null,
+      "status": "implemented"
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Packaging & Operations Memory",
+  "description": "Operational rules and standards for packaging, shipping, and stream operations. These are stable rules that should only change when Matthew decides to change them.",
+  "type": "object",
+  "required": ["packaging_rules", "shipping_standards", "stream_operations", "red_lines"],
+  "properties": {
+    "packaging_rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["rule", "applies_to"],
+        "properties": {
+          "rule": { "type": "string" },
+          "applies_to": { "type": "string" },
+          "threshold_gbp": { "type": "number" },
+          "notes": { "type": "string" }
+        }
+      }
+    },
+    "shipping_standards": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["standard"],
+        "properties": {
+          "standard": { "type": "string" },
+          "notes": { "type": "string" }
+        }
+      }
+    },
+    "stream_operations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["rule"],
+        "properties": {
+          "rule": { "type": "string" },
+          "reason": { "type": "string" }
+        }
+      }
+    },
+    "red_lines": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["rule", "reason"],
+        "properties": {
+          "rule": { "type": "string" },
+          "reason": { "type": "string" }
+        }
+      }
+    }
+  }
+}

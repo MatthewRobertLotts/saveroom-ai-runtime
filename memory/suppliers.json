@@ -1,0 +1,19 @@
+{
+  "suppliers": [
+    {
+      "id": "sup-001",
+      "name": "To be populated",
+      "source_type": "unknown",
+      "reliability": "unknown",
+      "reliability_notes": "No supplier records exist yet. This is a placeholder to show the schema.",
+      "pricing_notes": null,
+      "delivery_notes": null,
+      "minimum_spend_gbp": null,
+      "useful_product_types": [],
+      "risk_notes": null,
+      "last_used_date": null,
+      "total_transactions": 0,
+      "notes": "Replace this with real supplier data as sourcing decisions are made. Each supplier should have one record that is updated over time."
+    }
+  ]
+}

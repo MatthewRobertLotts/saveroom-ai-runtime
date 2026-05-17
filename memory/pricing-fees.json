@@ -1,0 +1,54 @@
+{
+  "fee_assumptions": [
+    {
+      "platform": "Whatnot",
+      "fee_type": "flat_fee_risk",
+      "value": "Low-AOV items (especially £1–£2 hammer prices) carry disproportionate flat-fee risk",
+      "notes": "Flat fees eat into margins on low-priced items. Need to be aware of break-even points.",
+      "date_observed": "2026-05-17",
+      "source": "Known SaveRoom context"
+    }
+  ],
+  "pricing_rules": [
+    {
+      "rule": "Target cost-per-pack logic should account for Whatnot fees",
+      "reason": "Flat-fee structure means low-priced items need higher margins to break even",
+      "date_set": "2026-05-17",
+      "status": "active"
+    },
+    {
+      "rule": "Bundle pricing should aim for higher AOV to reduce fee impact",
+      "reason": "Bundles increase average order value, reducing the proportional impact of flat fees",
+      "date_set": "2026-05-17",
+      "status": "active"
+    }
+  ],
+  "margin_observations": [
+    {
+      "observation": "English products can sell quickly but often carry higher buy-price risk",
+      "product_type": "English Pokémon packs",
+      "date_observed": "2026-05-17",
+      "confidence": "medium"
+    },
+    {
+      "observation": "Korean products have performed better than originally expected and are now a useful staple",
+      "product_type": "Korean Pokémon packs",
+      "date_observed": "2026-05-17",
+      "confidence": "medium"
+    },
+    {
+      "observation": "Japanese products are usually steady",
+      "product_type": "Japanese Pokémon packs",
+      "date_observed": "2026-05-17",
+      "confidence": "medium"
+    }
+  ],
+  "break_even_warnings": [
+    {
+      "warning": "Items selling at £1–£2 hammer price on Whatnot are at high risk of being unprofitable after flat fees",
+      "threshold_gbp": 2.00,
+      "context": "Whatnot flat-fee structure disproportionately impacts low-AOV items",
+      "date_identified": "2026-05-17"
+    }
+  ]
+}
