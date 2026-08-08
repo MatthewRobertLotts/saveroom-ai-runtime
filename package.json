@@ -1,14 +1,21 @@
 {
-  "name": "saveroom-ai",
+  "name": "saveroom-ai-runtime",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "TypeScript runtime experiments for SaveRoom AI-assisted operations workflows.",
+  "main": "orchestration/orchestrator.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "typecheck": "tsc --noEmit",
+    "test": "npm run typecheck"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "ai",
+    "automation",
+    "typescript",
+    "operations",
+    "workflow"
+  ],
+  "author": "Matthew Lotts",
+  "license": "Apache-2.0",
   "devDependencies": {
     "@types/node": "^25.6.1",
     "ts-node": "^10.9.2",

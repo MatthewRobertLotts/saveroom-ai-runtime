@@ -1,68 +1,44 @@
-<p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=0,2,3,4,6,8&height=5&section=header" width="100%" />
-</p>
-
 <div align="center">
-  <h1>🤖 SaveRoom AI Runtime</h1>
-  <p><strong>AI-assisted operations runtime</strong><br/>agents · workflows · memory · ingestion · reporting</p>
+  <h1>SaveRoom AI Runtime</h1>
+  <p><strong>TypeScript experiments for AI-assisted small-business operations workflows.</strong></p>
 </div>
 
 <p align="center">
-  <a href="#">
-    <img src="https://img.shields.io/badge/TypeScript-5.x-3178C6?style=for-the-badge&logo=typescript&logoColor=white"></a>
-  <a href="#">
-    <img src="https://img.shields.io/badge/Fastify-000000?style=for-the-badge&logo=fastify&logoColor=white"></a>
-  <a href="#">
-    <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white"></a>
-  <a href="#">
-    <img src="https://img.shields.io/badge/License-Apache%202.0-blue?style=for-the-badge"></a>
+  <a href="https://github.com/MatthewRobertLotts/saveroom-ai-runtime/actions/workflows/ci.yml"><img src="https://github.com/MatthewRobertLotts/saveroom-ai-runtime/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white" alt="TypeScript">
+  <img src="https://img.shields.io/badge/Node.js-20+-339933?logo=nodedotjs&logoColor=white" alt="Node.js 20+">
 </p>
 
----
+## What this is
 
-## 📌 Overview
+SaveRoom AI Runtime is an experimental TypeScript workspace for agent-style operations tooling: ingestion, workflow coordination, runtime adapters, memory notes, and generated reports.
 
-SaveRoom AI Runtime is an operations platform that coordinates AI agents, workflows, knowledge ingestion, and reporting for small-business automation. Built with TypeScript and Fastify.
+## Status
 
----
+This is a public workbench, not a polished product. It is kept public to show AI workflow design and TypeScript structure; production-ready SaveRoom systems live in the API/app repositories.
 
-## 🏗️ Structure
+## Structure
 
-```
-saveroom-ai-runtime/
-├── agents/          — AI agent definitions and orchestration
-├── ingestion/       — Knowledge ingestion pipelines
-├── memory/          — Memory and context management
-├── modes/           — Operational modes and configurations
-├── orchestration/   — Workflow orchestration engine
-├── outputs/         — Generated outputs and reports
-├── reports/         — Reporting utilities
-├── workflows/       — Workflow definitions
-├── package.json
-└── tsconfig.json
+```text
+agents/          agent definitions and prompts
+ingestion/       source ingestion experiments
+memory/          local memory/context notes
+modes/           runtime modes
+orchestration/   runtime adapters and orchestration code
+outputs/         generated outputs
+reports/         planning and analysis reports
+workflows/       workflow definitions
 ```
 
----
-
-## 🚀 Quick Start
+## Quick start
 
 ```bash
 git clone https://github.com/MatthewRobertLotts/saveroom-ai-runtime.git
 cd saveroom-ai-runtime
-npm install
-cp .env.example .env   # Configure your environment
-npm run dev
+npm ci
+npm test
 ```
 
----
+## License
 
-## 📄 License
-
-Copyright © 2026 Matthew Lotts. Licensed under the **Apache License, Version 2.0**. See [`LICENSE`](LICENSE) for details.
-
----
-
-<p align="center">
-  <a href="https://github.com/MatthewRobertLotts/saveroom-ai-runtime/stargazers"><img src="https://img.shields.io/github/stars/MatthewRobertLotts/saveroom-ai-runtime?style=social&label=Stars"></a>
-  <a href="https://github.com/MatthewRobertLotts/saveroom-ai-runtime/network"><img src="https://img.shields.io/github/forks/MatthewRobertLotts/saveroom-ai-runtime?style=social&label=Forks"></a>
-</p>
+Apache License 2.0. See [`LICENSE`](LICENSE).
