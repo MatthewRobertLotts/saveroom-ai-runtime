@@ -37,6 +37,7 @@ git clone https://github.com/MatthewRobertLotts/saveroom-ai-runtime.git
 cd saveroom-ai-runtime
 npm ci
 npm test
+npm run demo
 ```
 
 ## License

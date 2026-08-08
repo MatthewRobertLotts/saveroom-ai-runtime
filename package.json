@@ -5,7 +5,8 @@
   "main": "orchestration/orchestrator.ts",
   "scripts": {
     "typecheck": "tsc --noEmit",
-    "test": "npm run typecheck"
+    "demo": "ts-node examples/demo.ts",
+    "test": "npm run typecheck && npm run demo"
   },
   "keywords": [
     "ai",
