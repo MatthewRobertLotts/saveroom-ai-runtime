@@ -6,7 +6,8 @@
   "scripts": {
     "typecheck": "tsc --noEmit",
     "demo": "ts-node examples/demo.ts",
-    "test": "npm run typecheck && npm run demo"
+    "test": "npm run typecheck && npm run demo && npm run case-study",
+    "case-study": "ts-node examples/listing-assistant-demo.ts"
   },
   "keywords": [
     "ai",
